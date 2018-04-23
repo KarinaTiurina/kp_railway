@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180423184240) do
   enable_extension "plpgsql"
 
   create_table "trains", force: :cascade do |t|
-    t.string "type"
+    t.string "train_type"
     t.integer "number_of_seats"
     t.float "price_per_stop"
     t.datetime "created_at", null: false

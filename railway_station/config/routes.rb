@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
-  resources :train, only: [:index, :show, :edit, :update, :destroy]
+  resources :trains
 end
