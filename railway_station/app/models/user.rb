@@ -9,7 +9,6 @@ class User < ApplicationRecord
   validates :second_name, presence: true
   validates :phone, presence: true
   validates :email, presence: true
-  validates :password, presence: true
 
   before_validation :set_role, on: :create
 

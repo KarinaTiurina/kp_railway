@@ -1,0 +1,26 @@
+<h1>Trains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trains.each do |train| %>
+      <tr>
+        <td><%= train.train_type %></td>
+        <td> | <%= train.number_of_seats %></td>
+        <td> | <%= train.price_per_stop %></td>
+        <td> | <%= link_to 'Show', train_path(train) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+<%= link_to 'New Train', new_train_path %>
