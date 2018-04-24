@@ -1,0 +1,43 @@
+<%= form_for(@way) do |f| %>
+    <%= render partial: 'partials/form_errors', locals: {model: @way} %>
+
+    <div class="form-group">
+      <%= f.label :way_number %>
+      <%= f.number_field :way_number, class: 'form-control' %>
+    </div>
+
+    <div class="form-group" id="way_stops">
+      <%= f.label :stops_array %>
+      <% if @way.stops_array.present? %>
+        <% @way.stops_array.count.times do |index| %>
+          <%= render partial: "stop_form", locals: {stop_name: @way.stops_array[index]} %>
+        <% end %>
+      <% else %>
+        <%= render partial: "stop_form", locals: {stop_name: ""} %>
+      <% end %>
+    </div>
+    <a href="javascript:;" id="addNewStop">Add New Stop</a>
+
+    <div class="form-group">
+      <%= f.label :departure %>
+      <%= f.datetime_select :departure, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :arrival %>
+      <p><%= f.datetime_select :arrival, class: 'form-control' %></p>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :train %>
+      <%= f.collection_select(:train_id, Train.all, :id, :name_with_initial) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+
+    <div class="hide" id="new_stop_form">
+      <%= render partial: "stop_form", locals: {stop_name: ""} %>
+    </div>
+<% end %>

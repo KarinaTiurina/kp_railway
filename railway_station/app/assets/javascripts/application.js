@@ -11,5 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require turbolinks
 //= require_tree .
+
+
+$( document ).on('turbolinks:load', function() {
+  $("#addNewStop").click(function(){
+    $("#way_stops").append($("#new_stop_form").html());
+  });
+})
