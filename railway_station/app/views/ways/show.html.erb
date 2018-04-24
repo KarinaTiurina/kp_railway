@@ -1,0 +1,8 @@
+<h3><%= @way.way_number %></h3>
+<h3><%= @way.stops_array %></h3>
+<h3><%= @way.departure %></h3>
+<h3><%= @way.arrival %></h3>
+<h3><%= @way.train.number_of_seats %></h3>
+
+<%= link_to 'Edit', edit_way_path(@way) %> |
+<%= link_to 'Back', ways_path %>

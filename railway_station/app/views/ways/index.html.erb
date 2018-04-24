@@ -1,0 +1,31 @@
+<h1>Ways</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Way number</td>
+      <td>Stops array</td>
+      <td>Departure</td>
+      <td>Arrival</td>
+      <td>Number of seats</td>
+      <td></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ways.each do |way| %>
+      <tr>
+        <td><%= way.way_number %></td>
+        <td><%= way.stops_array %></td>
+        <td><%= way.departure %></td>
+        <td><%= way.arrival %></td>
+        <td><%= way.train.number_of_seats %></td>
+        <td><%= link_to 'Show', way_path(way) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'new way', new_way_path %>
+
+<br>
