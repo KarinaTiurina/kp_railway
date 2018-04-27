@@ -12,6 +12,7 @@ class WaysController < ApplicationController
   # GET /ways/1
   # GET /ways/1.json
   def show
+    @new_ticket = @way.tickets.build(params[:ticket])
   end
 
   def new

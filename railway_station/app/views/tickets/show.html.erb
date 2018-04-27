@@ -1,0 +1,8 @@
+<h3><%= @ticket.user.email %></h3>
+<h3><%= @ticket.way.stops_array %></h3>
+<h3><%= @ticket.price %></h3>
+<h3><%= @ticket.end_stop %></h3>
+
+<%= link_to 'Back', tickets_path %>
+
+<%= link_to 'Destroy', @ticket, method: :delete, data: { confirm: 'Are you sure?' } %>

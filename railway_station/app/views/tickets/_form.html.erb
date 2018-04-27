@@ -1,0 +1,12 @@
+<%= form_for [@way, ticket] do |f| %>
+    <%= render partial: 'partials/form_errors', locals: {model: ticket} %>
+
+    <div class="form-group">
+      <%= f.label :end_stop %>
+      <%= f.select :end_stop, options_for_select(@way.stops_array) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+<% end %>
