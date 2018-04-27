@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :trains
 
-  resources :ways
-
-  resources :tickets, except: [:edit, :update]
+  resources :ways do
+    resources :tickets, only: [:create, :destroy]
+  end
 end

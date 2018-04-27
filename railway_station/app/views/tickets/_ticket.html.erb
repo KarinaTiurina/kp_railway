@@ -1,0 +1,6 @@
+<p><%= ticket.end_stop %> | <%= ticket.price %> | <%= link_to(
+            "Destroy",
+            way_ticket_path(ticket.way, ticket),
+            method: :delete,
+            data: {confirm: "Are you sure?"}
+        ) %></p>
