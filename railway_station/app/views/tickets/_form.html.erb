@@ -1,0 +1,23 @@
+<%= form_for(@ticket) do |f| %>
+    <%= render partial: 'partials/form_errors', locals: {model: @ticket} %>
+
+    <div class="form-group">
+      <%= f.label :way %>
+      <%= f.collection_select(:way_id, Way.all, :id, :name_with_initial) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :end_stop %><br />
+      <%= f.text_field :end_stop, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %><br />
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+<% end %>

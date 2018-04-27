@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :trains
 
   resources :ways
+
+  resources :tickets, except: [:edit, :update]
 end
