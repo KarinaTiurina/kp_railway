@@ -43,5 +43,8 @@
 
 <%= column_chart Way.group_by_day_of_week(:departure, format: "%a").count %>
 
+<br />
+<br />
+<br />
 
-
+<%= pie_chart Ticket.group(:end_stop).count %>
