@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180427195836) do
     t.bigint "way_id"
     t.bigint "user_id"
     t.string "end_stop"
-    t.string "price"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tickets_on_user_id"

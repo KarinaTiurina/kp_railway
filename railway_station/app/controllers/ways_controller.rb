@@ -7,6 +7,10 @@ class WaysController < ApplicationController
   # GET /ways.json
   def index
     @ways = Way.all
+
+    if params[:stop_filter].present?
+      @ways = Way.where("'" + params[:stop_filter] + "' = ANY (stops_array)")
+    end
   end
 
   # GET /ways/1
@@ -28,7 +32,7 @@ class WaysController < ApplicationController
 
     respond_to do |format|
       if @way.save
-        format.html { redirect_to ways_path, notice: 'Way was successfully created.' }
+        format.html { redirect_to ways_path, notice: 'Маршрут успешно создан.' }
         format.json { render :index, status: :ok, location: @way }
       else
         format.html { render :new }
@@ -49,8 +53,8 @@ class WaysController < ApplicationController
 
     respond_to do |format|
       if @way.update(way_params)
-        format.html { redirect_to @way, notice: 'Way was successfully updated.' }
-        format.json { render :show, status: :ok, location: @way }
+        format.html { redirect_to ways_path, notice: 'Данные маршрута успешно обновлены.' }
+        format.json { render :index, status: :ok, location: @way }
       else
         format.html { render :edit }
         format.json { render json: @way.errors, status: :unprocessable_entity }
@@ -63,7 +67,7 @@ class WaysController < ApplicationController
   def destroy
     @way.destroy
     respond_to do |format|
-      format.html { redirect_to ways_url, notice: 'Way was successfully destroyed.' }
+      format.html { redirect_to ways_url, notice: 'Маршрут успешно удален.' }
       format.json { head :no_content }
     end
   end

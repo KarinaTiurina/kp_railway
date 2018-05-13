@@ -1,8 +1,6 @@
-<h3><%= @user.email %></h3>
-<h3><%= @user.name %></h3>
-<h3><%= @user.last_name %></h3>
-<h3><%= @user.second_name %></h3>
-<h3><%= @user.phone %></h3>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h3><%= @user.full_name %></h3>
+<br />
+Телефон: <%= @user.phone %> <br />
+Email: <%= @user.email %> <br />
+<br />
+<%= link_to 'Редактировать', edit_user_registration_path(@user), :class => 'button button-green' %>

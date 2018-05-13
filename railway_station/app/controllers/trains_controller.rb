@@ -7,6 +7,9 @@ class TrainsController < ApplicationController
   # GET /trains.json
   def index
     @trains = Train.all
+    if params[:train_type_filter].present?
+      @trains = Train.where(train_type: params[:train_type_filter])
+    end
   end
 
   # GET /trains/1
@@ -23,7 +26,7 @@ class TrainsController < ApplicationController
 
     respond_to do |format|
       if @train.save
-        format.html { redirect_to trains_path, notice: 'Train was successfully created.' }
+        format.html { redirect_to trains_path, notice: 'Поезд успешно создан.' }
         format.json { render :index, status: :ok, location: @train }
       else
         format.html { render :new }
@@ -41,7 +44,7 @@ class TrainsController < ApplicationController
   def update
     respond_to do |format|
       if @train.update(train_params)
-        format.html { redirect_to @train, notice: 'Train was successfully updated.' }
+        format.html { redirect_to @train, notice: 'Данные поезда успешно обновлены.' }
         format.json { render :show, status: :ok, location: @train }
       else
         format.html { render :edit }
@@ -55,7 +58,7 @@ class TrainsController < ApplicationController
   def destroy
     @train.destroy
     respond_to do |format|
-      format.html { redirect_to trains_url, notice: 'Train was successfully destroyed.' }
+      format.html { redirect_to trains_url, notice: 'Поезд успешно удален.' }
       format.json { head :no_content }
     end
   end

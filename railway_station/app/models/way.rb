@@ -15,4 +15,12 @@ class Way < ApplicationRecord
 
     "№#{way_number} #{first_stop} - #{last_stop}"
   end
+
+  def stops_array_str
+    result = ""
+    stops_array.each do |item|
+      result += item + " "
+    end
+    result
+  end
 end

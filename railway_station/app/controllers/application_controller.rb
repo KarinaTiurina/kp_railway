@@ -12,4 +12,7 @@ class ApplicationController < ActionController::Base
       u.permit(:role, :email, :name, :last_name, :second_name, :phone, :password, :password_confirmation, :current_password)
     }
   end
+
+  def index
+  end
 end

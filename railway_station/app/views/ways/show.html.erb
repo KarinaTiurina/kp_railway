@@ -1,12 +1,13 @@
-<h3><%= @way.way_number %></h3>
-<h3><%= @way.stops_array %></h3>
+<h3><%= @way.name_with_initial %></h3>
+<!-- <h3><%= @way.stops_array %></h3>
 <h3><%= @way.departure %></h3>
 <h3><%= @way.arrival %></h3>
-<h3><%= @way.train.number_of_seats %></h3>
+<h3><%= @way.train.number_of_seats %></h3> -->
+<br />
 
-<%= link_to 'Edit', edit_way_path(@way) %> |
-<%= link_to 'Back', ways_path %>
-
+Маршрут: <%= @way.stops_array_str %> <br />
+Отправление: <%= @way.departure %><br />
+Прибытие: <%= @way.arrival %><br />
 
 <%= render(
     partial: "tickets/ticket",
@@ -14,6 +15,6 @@
   ) %>
 
 
-<br />
-
 <%= render partial: 'tickets/form', locals: {ticket: @new_ticket || @way.tickets.build} %>
+<br />
+<%= link_to 'Назад', ways_path, class: 'button button-small button-green' %>

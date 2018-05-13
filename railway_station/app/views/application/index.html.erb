@@ -1,0 +1,9 @@
+<%= image_tag "main.jpg", :class => 'main_img' %>
+<br />
+<br />
+<% if user_signed_in? %>
+  <li>
+  <%= link_to 'Маршруты', ways_path, { :class=>"button" } %>
+  </li>
+  <li><%= link_to 'Поезда', trains_path, { :class=>"button" } %></li>
+<% end %>

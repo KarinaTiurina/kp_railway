@@ -15,10 +15,14 @@ class User < ApplicationRecord
 
   before_validation :set_role, on: :create
 
+
+  def full_name
+    last_name + " " + name + " " + second_name
+  end
+
   private
 
   def set_role
     self.role = "_USER_" if self.role.blank?
-
   end
 end

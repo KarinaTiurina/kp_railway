@@ -16,10 +16,10 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @new_ticket.save
-        format.html { redirect_to way_path(@way), notice: 'Ticket was successfully created.' }
+        format.html { redirect_to way_path(@way), notice: 'Билет успешно оплачен' }
         format.json { render :show, status: :ok, location: @way }
       else
-        format.html { render 'ways/show', alert: "Ticket creation error." }
+        format.html { render 'ways/show', alert: "Ошибка покупки билета" }
         format.json { render json: @new_ticket.errors, status: :unprocessable_entity }
       end
     end
@@ -30,7 +30,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to way_url(@way), notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to way_url(@way), notice: 'Билет успешно аннулирован' }
       format.json { head :no_content }
     end
   end

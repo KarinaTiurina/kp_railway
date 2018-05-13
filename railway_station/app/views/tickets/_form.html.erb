@@ -1,12 +1,33 @@
 <%= form_for [@way, ticket] do |f| %>
+    <h3>Купить билет</h3>
     <%= render partial: 'partials/form_errors', locals: {model: ticket} %>
 
     <div class="form-group">
-      <%= f.label :end_stop %>
+      <%= f.label 'Начальная остановка' %>
+      <%= select_tag :start_stop, options_for_select(@way.stops_array) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Конечная остановка' %>
       <%= f.select :end_stop, options_for_select(@way.stops_array) %>
     </div>
 
+    <div class="form-group">
+      <%= f.label 'Цена' %>
+      <%= @way.train.price_per_stop %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Номер карты' %>
+      <%= text_field_tag :card %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Пин-код карты' %>
+      <%= text_field_tag :pin %>
+    </div>
+
     <div class="actions">
-      <%= f.submit "Save", class: 'btn btn-primary' %>
+      <%= f.submit "Оплатить", class: 'button button-green' %>
     </div>
 <% end %>

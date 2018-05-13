@@ -1,31 +1,47 @@
-<h1>Ways</h1>
+<h1>Маршруты</h1>
 
-<table>
+<form>
+  <%= text_field_tag :stop_filter %>
+  <%= submit_tag "Поиск по городу", class: 'button button-small button-green' %>
+</form>
+<br />
+<table border="1">
   <thead>
     <tr>
-      <td>Way number</td>
-      <td>Stops array</td>
-      <td>Departure</td>
-      <td>Arrival</td>
-      <td>Number of seats</td>
-      <td></td>
+      <th style="padding: 5px">Номер маршрута</th>
+      <th style="padding: 5px">Путь следования</th>
+      <th style="padding: 5px">Отправление</th>
+      <th style="padding: 5px">Прибытие</th>
+      <th style="padding: 5px">Количество мест</th>
+      <th style="padding: 5px">Цена за остановку</th>
+      <th style="padding: 5px"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @ways.each do |way| %>
       <tr>
-        <td><%= way.way_number %></td>
-        <td><%= way.stops_array %></td>
-        <td><%= way.departure %></td>
-        <td><%= way.arrival %></td>
-        <td><%= way.train.number_of_seats %></td>
-        <td><%= link_to 'Show', way_path(way) %></td>
+        <td style="padding: 5px"><%= way.way_number %></td>
+        <td style="padding: 5px"><%= way.stops_array_str %></td>
+        <td style="padding: 5px"><%= way.departure %></td>
+        <td style="padding: 5px"><%= way.arrival %></td>
+        <td style="padding: 5px"><%= way.train.number_of_seats %></td>
+        <td style="padding: 5px"><%= way.train.price_per_stop %></td>
+        <td style="padding: 5px"><%= link_to 'Подробнее', way_path(way) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'new way', new_way_path %>
-
 <br>
+
+<%= link_to 'Добавить маршрут', new_way_path, :class => 'button button-green' %>
+
+<br />
+<br />
+<br />
+
+<%= column_chart Way.group_by_day_of_week(:departure, format: "%a").count %>
+
+
+

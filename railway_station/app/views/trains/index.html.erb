@@ -1,26 +1,33 @@
-<h1>Trains</h1>
+<h1>Поезда</h1>
 
-<table>
+<form>
+  <%= select_tag :train_type_filter, options_for_select([ "Пригородный", "Дальнего следования" ], "Пригородный") %>
+  <%= submit_tag "Фильтр", class: 'button button-small button-green' %>
+</form>
+<br />
+<table border="1">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th style="padding: 5px">Тип поезда</th>
+      <th style="padding: 5px">Количество мест</th>
+      <th style="padding: 5px">Цена за остановку</th>
+      <th style="padding: 5px" colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @trains.each do |train| %>
       <tr>
-        <td><%= train.train_type %></td>
-        <td> | <%= train.number_of_seats %></td>
-        <td> | <%= train.price_per_stop %></td>
-        <td> | <%= link_to 'Show', train_path(train) %></td>
+        <td style="padding: 5px"><%= train.train_type %></td>
+        <td style="padding: 5px"><%= train.number_of_seats %></td>
+        <td style="padding: 5px"><%= train.price_per_stop %></td>
+        <td style="padding: 5px"><%= link_to 'Редактировать', edit_train_path(train) %></td>
+        <td style="padding: 5px"><%= link_to 'Удалить', train, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
-
 <br>
 
-<%= link_to 'New Train', new_train_path %>
+<%= link_to 'Добавить поезд', new_train_path, :class => 'button button-green' %>
